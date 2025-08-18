@@ -1,0 +1,30 @@
+### разработчик плагина Soldi_n .jar
+
+settings:
+  warn-threshold: 3
+  warn-reset-seconds: 60
+  punish-type: EXECUTION # EXECUTION, KICK, BAN
+
+anticheat:
+  max-cps-mobs: 20
+  max-cps-players: 15
+  max-reach: 3.2
+  fly-timeout: 5
+  kill-aura-check: true
+  auto-clicker-check: true
+  speed-check: true
+  nofall-check: true
+  xray-check: true
+  chat-filter: true
+
+logging:
+  enabled: true
+  violations-file: "logs/violations.log"
+  banned-file: "banned.yml"
+
+effects:
+  execution-seconds: 20
+  messages:
+    start: "&c[SLDN] Обнаружен читер! Исполнение через {seconds}..."
+    ban: "&c[SLDN] Читер {player} был навсегда изгнан!"
+    test: "&7Тестовая казнь запущена на {player}"
