@@ -1,0 +1,4 @@
+name: sldnsoldin
+version: 6.0.1
+main: com.sldn.sldnsoldin.Main
+api-version: 1.16
