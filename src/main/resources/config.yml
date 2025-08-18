@@ -1,0 +1,10 @@
+### разработчик плагина Soldi_n .jar
+settings:
+  prefix: "&c[SLDN]&f "
+  ban-message: "&cВы были забанены античитом sldnsoldin!"
+  execution-title: "&cУбираем читера..."
+  execution-subtitle: "&7Осталось %time% сек."
+  execution-sign: "Тут был похоронен читер %player%"
+chat-filter:
+  enabled: true
+  blocked-words: ["мат1", "мат2", "реклама"]
