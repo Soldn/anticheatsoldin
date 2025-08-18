@@ -1,0 +1,14 @@
+name: sldnsoldin
+main: org.sldn.soldin.SldnSoldin
+version: ${project.version}
+api-version: '1.16'
+author: you
+commands:
+  sldn:
+    description: sldnsoldin admin/test commands
+    usage: /sldn <test|ban|reload>
+    permission: sldn.admin
+permissions:
+  sldn.admin:
+    description: Allows admin commands
+    default: op
