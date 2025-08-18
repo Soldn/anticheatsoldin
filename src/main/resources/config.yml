@@ -1,6 +1,0 @@
-# Конфиг для GPSAddonSoldin
-# Используй плейсхолдеры: {x}, {y}, {z}, {hp}, {food}
-# Пример: "XYZ: {x} {y} {z} | HP: {hp} | FOOD: {food}"
-
-actionbar-format: "XYZ: {x} {y} {z} | HP: {hp} | FOOD: {food}"
-update-interval: 20   # каждые 20 тиков (1 секунда)
