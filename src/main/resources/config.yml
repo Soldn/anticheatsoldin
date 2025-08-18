@@ -1,0 +1,32 @@
+
+# SLDNSoldin AntiCheat — config v1.1
+# Пороговые значения и исключения
+
+fly:
+  maxAirTicks: 18            # сколько тиков подряд игрок может быть в воздухе без падения (исключая элитры/эффекты/нокаут TNT)
+  verticalSpeedThreshold: 0.9  # максимальная вертикальная скорость вверх без причин
+  tntKnockbackWindowMs: 4000  # окно иммунитета к флай-детекту после TNT/взрыва/velocity
+  allowElytra: true
+  allowLevitation: true
+  allowRiptide: true          # трезубец "Тяга"
+
+combat:
+  cpsThreshold: 16            # кликов в секунду, выше — подозрительно
+  angleThresholdDegrees: 75   # допустимое отклонение от направления взгляда при ударе
+  reachThreshold: 3.2         # макс. дистанция удара по живой цели (блоки)
+  multiTargetWindowMs: 250    # окно, где удары по >2 целям считаются подозрительными
+
+ban:
+  # Сколько подтверждений нарушения подряд нужно, чтобы банить
+  thresholds:
+    Fly: 5
+    KillAura: 6
+
+actions:
+  banCommand: "ban %player% [SLDNSoldin] %reason%"
+
+logging:
+  fileName: "logs.txt"
+  logDetections: true
+  logBans: true
+  alsoConsole: true
