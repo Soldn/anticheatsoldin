@@ -1,0 +1,7 @@
+
+name: SLDNSoldin
+version: 1.1.0
+main: com.sldn.sldnsoldin.SLDNSoldin
+api-version: '1.16'
+commands: {}
+permissions: {}
