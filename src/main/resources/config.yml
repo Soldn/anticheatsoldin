@@ -1,0 +1,59 @@
+### разработчик плагина Soldi_n .jar
+# sldnsoldin configuration
+violations:
+  nofall: 6
+  reach: 5
+  autoclicker: 8
+  speed: 6
+  killaura: 6
+  fly: 6
+  noslow: 6
+  fastbreak: 8
+  xray-strikes: 5
+thresholds:
+  autoban-total: 12
+  certainty-autokill: 9
+  test-ban-seconds: 1
+effects:
+  execution-seconds: 20
+  levitation-at: 10
+  explosion-power: 2.0
+  explosion-damages-blocks: false
+chat-filter:
+  enable: true
+  blocked-words: [ 'мат1', 'мат2', 'реклама1', 'discord.gg', 'vk.com' ]
+  block-caps: true
+  caps-min-length: 6
+  notify-admins: true
+xray:
+  track-ores: [DIAMOND_ORE, DEEPSLATE_DIAMOND_ORE, ANCIENT_DEBRIS]
+  window-mined-blocks: 200
+  max-ore-rate: 0.06 # 6% of mined blocks being rare ores is suspicious
+  alert-every: 1
+messages:
+  prefix: '&7[&cSLDN&7] '
+  flagged-admin: '&eПодозрение на &c{type}&e у игрока &6{player}&e (&7{vl}&e нарушений)'
+  dm-player: '&cВаши действия подозрительны. Продолжая, вы будете наказаны.'
+  start-exec: '&cУбираем читера: {seconds} сек.'
+  ban-reason: 'Античит sldnsoldin'
+  manual-ban: '&aИгрок &6{player}&a забанен навсегда.'
+  reloaded: '&aКонфиг перезагружен.'
+
+settings:
+  warn-threshold: 3
+  warn-reset-seconds: 60
+
+anticheat:
+  kill-aura-check: true
+  auto-clicker-check: true
+  speed-check: true
+  fly-check: true
+  fastbreak-check: true
+  reach-check: true
+  nofall-check: true
+  noslow-check: true
+  xray-check: true
+  max-cps-mobs: 20
+  max-cps-players: 15
+  max-reach: 3.2
+  fly-timeout: 5
