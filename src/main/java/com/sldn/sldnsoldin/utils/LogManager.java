@@ -1,33 +1,44 @@
 package com.sldn.sldnsoldin.utils;
 
-import com.sldn.sldnsoldin.SLDNSoldin;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class LogManager {
-
-    private final SLDNSoldin plugin;
     private final File logFile;
 
-    public LogManager(SLDNSoldin plugin) {
-        this.plugin = plugin;
-        this.logFile = new File(plugin.getDataFolder(), "logs.txt");
+    public LogManager(File dataFolder) {
+        if (!dataFolder.exists()) {
+            dataFolder.mkdirs();
+        }
+        this.logFile = new File(dataFolder, "logs.txt");
+    }
 
-        if (!plugin.getDataFolder().exists()) {
-            plugin.getDataFolder().mkdirs();
+    // старый вариант
+    public void log(String message) {
+        write(message);
+    }
+
+    // новый вариант (с доп. параметрами)
+    public void log(String player, String check, String reason) {
+        String formatted = "[" + new SimpleDateFormat("HH:mm:ss").format(new Date()) + "] "
+                + player + " | " + check + " | " + reason;
+        write(formatted);
+    }
+
+    private void write(String line) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile, true))) {
+            bw.write(line);
+            bw.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    public void log(String message) {
-        String timestamp = "[" + LocalDateTime.now() + "] " + message;
-        plugin.getLogger().info(timestamp);
-
-        try (FileWriter writer = new FileWriter(logFile, true)) {
-            writer.write(timestamp + "\n");
-        } catch (IOException e) {
-            plugin.getLogger().severe("Failed to write to log file: " + e.getMessage());
-        }
+    public File getLogFile() {
+        return logFile;
     }
 }
