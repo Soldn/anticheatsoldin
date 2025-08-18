@@ -1,0 +1,11 @@
+settings:
+  warn-threshold: 3
+  warn-reset-seconds: 60
+
+anticheat:
+  max-cps-mobs: 20
+  max-cps-players: 15
+  max-reach: 3.2
+  fly-timeout: 5
+effects:
+  execution-seconds: 20
