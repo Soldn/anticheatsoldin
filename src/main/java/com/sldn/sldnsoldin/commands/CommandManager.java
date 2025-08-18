@@ -9,61 +9,69 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CommandManager implements CommandExecutor {
+
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (args.length == 0) {
-            sender.sendMessage(ChatColor.RED + "Использование: /sldn <test|ban|tempban|kick>");
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (args.length < 2) {
+            sender.sendMessage(ChatColor.RED + "Использование:");
+            sender.sendMessage(ChatColor.YELLOW + "/sldn ban <игрок> <причина>");
+            sender.sendMessage(ChatColor.YELLOW + "/sldn tempban <игрок> <минуты> <причина>");
+            sender.sendMessage(ChatColor.YELLOW + "/sldn kick <игрок> <причина>");
             return true;
         }
 
-        if (args[0].equalsIgnoreCase("test") && sender instanceof Player) {
-            PunishManager.playPunishAnimation((Player) sender);
-            sender.sendMessage(ChatColor.GREEN + "Тест анимации!");
+        String action = args[0];
+        Player target = Bukkit.getPlayer(args[1]);
+
+        if (target == null) {
+            sender.sendMessage(ChatColor.RED + "Игрок " + args[1] + " не найден.");
             return true;
         }
 
-        if (args[0].equalsIgnoreCase("ban")) {
-            if (args.length < 3) {
-                sender.sendMessage(ChatColor.RED + "Использование: /sldn ban <игрок> <причина>");
-                return true;
-            }
-            Player target = Bukkit.getPlayer(args[1]);
-            if (target != null) {
-                String reason = String.join(" ", java.util.Arrays.copyOfRange(args, 2, args.length));
+        switch (action.toLowerCase()) {
+            case "ban": {
+                if (args.length < 3) {
+                    sender.sendMessage(ChatColor.RED + "Использование: /sldn ban <игрок> <причина>");
+                    return true;
+                }
+                String reason = String.join(" ", args).replaceFirst("ban " + args[1] + " ", "");
                 PunishManager.ban(target, reason);
-                sender.sendMessage(ChatColor.GREEN + "Игрок " + target.getName() + " забанен. Причина: " + reason);
+                sender.sendMessage(ChatColor.GREEN + "Игрок " + target.getName() + " забанен.");
+                break;
             }
-            return true;
-        }
 
-        if (args[0].equalsIgnoreCase("tempban")) {
-            if (args.length < 5) {
-                sender.sendMessage(ChatColor.RED + "Использование: /sldn tempban <игрок> <число> <s/m/h/d> <причина>");
-                return true;
+            case "tempban": {
+                if (args.length < 4) {
+                    sender.sendMessage(ChatColor.RED + "Использование: /sldn tempban <игрок> <минуты> <причина>");
+                    return true;
+                }
+                int minutes;
+                try {
+                    minutes = Integer.parseInt(args[2]);
+                } catch (NumberFormatException e) {
+                    sender.sendMessage(ChatColor.RED + "Укажите число минут!");
+                    return true;
+                }
+                String reason = String.join(" ", args).replaceFirst("tempban " + args[1] + " " + args[2] + " ", "");
+                PunishManager.tempBan(target, reason, minutes);
+                sender.sendMessage(ChatColor.GREEN + "Игрок " + target.getName() + " временно забанен на " + minutes + " мин.");
+                break;
             }
-            Player target = Bukkit.getPlayer(args[1]);
-            if (target != null) {
-                int duration = Integer.parseInt(args[2]);
-                String unit = args[3];
-                String reason = String.join(" ", java.util.Arrays.copyOfRange(args, 4, args.length));
-                PunishManager.tempBan(target, reason, duration, unit);
-                sender.sendMessage(ChatColor.GREEN + "Игрок " + target.getName() + " временно забанен!");
-            }
-            return true;
-        }
 
-        if (args[0].equalsIgnoreCase("kick")) {
-            if (args.length < 3) {
-                sender.sendMessage(ChatColor.RED + "Использование: /sldn kick <игрок> <причина>");
-                return true;
-            }
-            Player target = Bukkit.getPlayer(args[1]);
-            if (target != null) {
-                String reason = String.join(" ", java.util.Arrays.copyOfRange(args, 2, args.length));
+            case "kick": {
+                if (args.length < 3) {
+                    sender.sendMessage(ChatColor.RED + "Использование: /sldn kick <игрок> <причина>");
+                    return true;
+                }
+                String reason = String.join(" ", args).replaceFirst("kick " + args[1] + " ", "");
                 PunishManager.kick(target, reason);
                 sender.sendMessage(ChatColor.GREEN + "Игрок " + target.getName() + " кикнут.");
+                break;
             }
-            return true;
+
+            default:
+                sender.sendMessage(ChatColor.RED + "Неизвестное действие: " + action);
+                break;
         }
 
         return true;
