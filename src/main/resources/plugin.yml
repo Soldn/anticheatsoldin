@@ -1,0 +1,13 @@
+name: SLDNSoldin
+main: com.sldn.sldnsoldin.SLDNSoldin
+version: 2.0
+api-version: 1.16
+commands:
+  sldn:
+    description: Основная команда античита SLDN
+    usage: /<command> <test|ban|tempban|kick>
+    permission: sldn.use
+permissions:
+  sldn.use:
+    description: Доступ к командам античита
+    default: op
