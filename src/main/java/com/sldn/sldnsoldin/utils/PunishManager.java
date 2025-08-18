@@ -1,34 +1,31 @@
 package com.sldn.sldnsoldin.utils;
 
-import com.sldn.sldnsoldin.SLDNSoldin;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class PunishManager {
+    private final LogManager logManager;
 
-    private final SLDNSoldin plugin;
-
-    public PunishManager(SLDNSoldin plugin) {
-        this.plugin = plugin;
+    public PunishManager(LogManager logManager) {
+        this.logManager = logManager;
     }
 
-    public void ban(Player player, String reason) {
-        plugin.getLogManager().log("Player " + player.getName() + " banned for: " + reason);
-        Bukkit.getScheduler().runTask(plugin, () -> {
-            player.kickPlayer("Banned: " + reason);
-        });
+    // старый метод
+    public void flag(Player player, String reason) {
+        logManager.log(player.getName() + " flagged: " + reason);
     }
 
-    public void tempBan(Player player, String reason, long durationMs) {
-        plugin.getLogManager().log("Player " + player.getName() + " temp-banned for " + durationMs + "ms: " + reason);
-        // TODO: save tempban info in file/database
-        Bukkit.getScheduler().runTask(plugin, () -> {
-            player.kickPlayer("TempBan: " + reason);
-        });
-    }
+    // новый метод (расширенный)
+    public void flag(Player player, String check, String reason, boolean autoban) {
+        String msg = player.getName() + " flagged (" + check + "): " + reason;
+        logManager.log(player.getName(), check, reason);
 
-    public void unban(String playerName) {
-        plugin.getLogManager().log("Player " + playerName + " unbanned");
-        // TODO: remove ban info
+        if (autoban) {
+            Bukkit.getScheduler().runTask(Bukkit.getPluginManager().getPlugin("SLDNSoldin"), () -> {
+                player.kickPlayer("§cВы были забанены античитом (§4" + check + "§c)");
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(),
+                        "ban " + player.getName() + " [SLDNSoldin] Читы: " + check);
+            });
+        }
     }
 }
