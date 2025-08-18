@@ -1,0 +1,16 @@
+name: sldnsoldin
+main: com.sldn.sldnsoldin.SldnMain
+version: 6.0.1
+api-version: 1.16
+author: Soldi_n
+commands:
+  sldn:
+    description: Главная команда античита
+    usage: /sldn <test|ban|gui|banned>
+permissions:
+  sldn.admin:
+    description: Админ-доступ к командам
+    default: op
+  sldn.notify:
+    description: Получает уведомления античита
+    default: op
