@@ -17,7 +17,7 @@ public class CommandManager implements CommandExecutor {
     public CommandManager(SLDNSoldin plugin) { this.plugin = plugin; }
 
     private void logAction(String text) {
-        try (FileWriter writer = new FileWriter(plugin.getLogFile(), true)) {
+        try (FileWriter writer = new FileWriter(plugin.getLogManager().getLogFile(), true)) {
             writer.write("[" + new Date() + "] " + text + "\n");
         } catch (IOException e) {
             plugin.getLogger().warning("Ошибка записи в logs.txt!");
