@@ -1,0 +1,24 @@
+# Плагин Sldn разработан Soldi_n .jar
+checks:
+  autoclick: { enabled: true, cps_max: 18, points: 2 }
+  speed:     { enabled: true, dxz_max: 0.75, spike_dxz: 1.7, points: 1 }
+  fly:       { enabled: true, air_ticks: 18, points: 2 }
+  killaura:  { enabled: true, dt_min: 40, dt_max: 120, yaw_stddev_max: 0.6, points: 2 }
+
+punish:
+  threshold_points: 10
+  permanent: true
+  reason: "Анти-чит: подозрительная активность"
+
+animation:
+  bossbar_seconds: 20
+  levitation_seconds: 10
+  scatter_radius: 5.0
+
+logging:
+  enabled: true
+  file: "logs.txt"
+  level: "INFO"
+
+general:
+  bypass_permission: "sldn.bypass"

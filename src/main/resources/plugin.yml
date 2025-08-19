@@ -1,0 +1,21 @@
+# Плагин Sldn разработан Soldi_n .jar
+name: SLDNantiSoldin
+main: com.sldnanti.Main
+version: 3.0
+author: Soldi_n
+commands:
+  sldn:
+    description: Основная команда SLDN античита
+    usage: /sldn <args>
+  ban:
+    description: Забанить игрока
+  tempban:
+    description: Временный бан
+  unban:
+    description: Разбанить игрока
+  mute:
+    description: Замутить игрока
+  unmute:
+    description: Размутить игрока
+  tempmute:
+    description: Временный мут
