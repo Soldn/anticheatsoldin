@@ -1,34 +1,22 @@
-# Плагин Sldн разработан Soldi_n .jar
-name: Build SldnantiSoldin
+name: Build
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up JDK 8
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: temurin
-          java-version: '8'
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      - name: Build with Gradle Wrapper
-        run: ./gradlew clean build
-
-      - name: Upload built JAR
-        uses: actions/upload-artifact@v4
+          java-version: 17
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+      - uses: actions/upload-artifact@v3
         with:
-          name: SldnantiSoldin
-          path: build/libs/SldnantiSoldin-3.0.jar
+          name: sldnvanilasoldin
+          path: target/sldnvanilasoldin.jar
