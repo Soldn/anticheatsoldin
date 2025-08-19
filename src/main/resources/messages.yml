@@ -1,0 +1,19 @@
+# Сообщения плагина SLDN AntiCheat
+# Плейсхолдеры: %player%, %reason%, %vl%, %time%
+prefix: "§8[§cSLDN§8]"
+
+alerts:
+  KILLAURA: "%prefix% §fИгрок §c%player% §fподозревается в §cKillAura §7(VL=%vl%)"
+  FLY: "%prefix% §fИгрок §c%player% §fподозревается в §cFly §7(VL=%vl%)"
+  SPEED: "%prefix% §fИгрок §c%player% §fподозревается в §cSpeed §7(VL=%vl%)"
+  AUTOCLICKER: "%prefix% §fИгрок §c%player% §fподозревается в §cAutoClicker §7(VL=%vl%)"
+
+punishments:
+  KICK: "%prefix% §cИгрок %player% был кикнут за %reason% (VL=%vl%)"
+  TEMPBAN: "%prefix% §cИгрок %player% получил временный бан за %reason% (VL=%vl%)"
+  BAN: "%prefix% §cИгрок %player% был забанен за %reason% (VL=%vl%)"
+
+generic:
+  reloaded: "%prefix% §aКонфигурация перезагружена."
+  noperms: "%prefix% §cНедостаточно прав."
+  vl: "%prefix% §7VL %player%: §e%vl%"

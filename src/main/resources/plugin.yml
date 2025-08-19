@@ -1,0 +1,6 @@
+name: SLDNSoldin
+main: com.sldn.sldnsoldin.SLDNSoldin
+version: 1.0
+api-version: 1.21
+author: soldi_n
+description: Античит плагин для Paper/Spigot 1.21.6
