@@ -1,0 +1,8 @@
+main: com.sldn.sldnsoldin.SLDNSoldin
+name: SLDNSoldin
+version: 1.0
+api-version: 1.19
+commands:
+  kickveyp:
+    description: "Кикает игрока с временным баном"
+    usage: "/kickveyp <игрок>"
