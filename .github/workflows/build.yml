@@ -1,27 +1,25 @@
-// Плагин Sldn разработан Soldi_n .jar
-plugins {
-    id 'java'
-}
+# .github/workflows/build.yml
+name: Build SldnantiSoldin
 
-group = 'com.sldnanti'
-version = '3.0'
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-repositories {
-    mavenCentral()
-    maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
-}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-dependencies {
-    compileOnly "org.spigotmc:spigot-api:1.21.1-R0.1-SNAPSHOT"
-}
+      - name: Set up JDK 8
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: '8'
 
-jar {
-    manifest {
-        attributes(
-            'Main-Class': 'com.sldnanti.Main'
-        )
-    }
-}
+      - name: Build with Gradle
+        run: ./gradlew build
