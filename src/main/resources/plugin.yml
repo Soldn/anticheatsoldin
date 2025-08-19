@@ -1,8 +1,0 @@
-name: SLDNSoldin
-version: 1.0.0
-main: com.sldn.sldnsoldin.SLDNSoldin
-api-version: 1.16
-commands:
-  sldn:
-    description: Основная команда плагина
-    usage: /sldn <ban|kick>
