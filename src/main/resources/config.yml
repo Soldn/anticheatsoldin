@@ -1,0 +1,54 @@
+# Разработчик: sldn (aka soldi_n)
+
+checks:
+  enabled:
+    KillAura: true
+    Fly: true
+    Speed: true
+    AutoClicker: true
+  punishMode: tempban         # варианты: kick, tempban, ban
+  tempBanMinutes: 60          # срок временного бана
+  autobanThreshold: 25        # общий порог VL
+  banCommand: 'ban %player% [SLDN] Чит: %reason% (VL %vl%)'
+  warnCommand: 'tell %player% [SLDN] Предупреждение: %reason% (VL %vl%)'
+
+# Глобальные исключения
+exempt:
+  combatSecondsAfterDamage: 3
+  movementSecondsAfterExplosion: 3
+  elytraMaxGlideSecondsAfterToggle: 2
+  tntBoostMaxSeconds: 3
+  riptideMaxSeconds: 3
+
+# Пороговые значения по чекам
+killaura:
+  maxTargetsPerTick: 1
+  minSwingIntervalTicks: 2
+  maxYawChangePerTick: 75.0
+  vlPerFail: 2
+
+fly:
+  maxAscendPerTick: 0.62
+  bufferToFlag: 6
+  vlPerFail: 1
+
+speed:
+  baseMaxBps: 5.8
+  iceMultiplier: 1.35
+  soulSpeedBonusPerLevel: 0.5
+  speedEffectPerLevel: 0.2
+  dolphinsGraceBonus: 1.7
+  elytraIgnore: true
+  bufferToFlag: 12
+  vlPerFail: 1
+
+autoclicker:
+  cpsWindowSeconds: 2
+  maxCPS: 15
+  minStdDev: 1.2
+  vlPerFail: 2
+
+logs:
+  enabled: true
+  folder: logs
+  rotateDaily: true
