@@ -1,4 +1,4 @@
-# Плагин Sldn разработан Soldi_n .jar
+# Плагин Sldн разработан Soldi_n .jar
 name: Build SldnantiSoldin
 
 on:
@@ -28,7 +28,7 @@ jobs:
         run: ./gradlew clean build
 
       - name: Upload built JAR
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: SldnantiSoldin
           path: build/libs/SldnantiSoldin-3.0.jar
